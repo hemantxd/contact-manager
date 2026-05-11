@@ -1,8 +1,9 @@
 "use server"
 
 import axios from "axios"
-import { UserType } from "../_types/user"
+import { UserType, SessionUserType } from "../_types/user"
 import { redirect } from "next/navigation"
+import { deleteSessionCookie, setSessionCookie } from "../lib/session"
 
 const API_URL = "http://localhost:3001"
 
@@ -15,6 +16,11 @@ export const loginAction = async(formData: FormData) => {
             throw new Error("Invalid credentials")
         }
         //set user in cookies
+        await setSessionCookie({
+            id: user.id,
+            name: user.name,
+            email: user.email
+        })
         
     }catch(e){
         throw new Error("Failed to login")
@@ -23,12 +29,12 @@ export const loginAction = async(formData: FormData) => {
 }
 
 export const logoutAction = async() => {
-    "use server"
-    const res = await fetch(`${API_URL}/api/logout`, {
-        method: "POST"
-    })
-    if(!res.ok) {
+    try{
+        //delete user from cookies
+        await deleteSessionCookie()
+        console.log("deleted session cookie")
+    }catch(e){
         throw new Error("Failed to logout")
     }
-    return res.json()
+    //redirect("/")
 }

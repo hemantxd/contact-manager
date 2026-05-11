@@ -1,8 +1,9 @@
+'use server'
 import { cookies } from "next/headers";
-import { UserType } from "../_types/user";
+import { SessionUserType, UserType } from "../_types/user";
 
 //set session cookie
-export const setSessionCookie = async(user:UserType)=>{
+export const setSessionCookie = async(user:SessionUserType)=>{
     (await cookies()).set("session", JSON.stringify(user), 
     {
         httpOnly: true,
@@ -15,17 +16,17 @@ export const setSessionCookie = async(user:UserType)=>{
 }
 
 //get session cookie
-export const getSessionCookie = async()=>{
+export const getSessionCookie = async() : Promise<UserType | null>=>{
 
-    const session = (await cookies()).get("session")?.value
-    
-    if(!session) return null
-    const user = JSON.parse(session) as UserType
-    return user
+    const cookieStore = cookies()
+    const sessionCookie = (await cookieStore).get("session")
+    if(!sessionCookie) return null
+    return JSON.parse(sessionCookie.value)
 }
 
 //delete session cookie
 
 export const deleteSessionCookie = async()=>{
-    (await cookies()).delete("session")
+    const cookieStore = cookies();
+    (await cookieStore).delete("session")
 }

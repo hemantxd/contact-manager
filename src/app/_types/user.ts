@@ -4,3 +4,9 @@ export interface UserType {
     email: string;
     password: string;
 }
+
+export interface SessionUserType {
+    id: string;
+    name: string;
+    email: string;
+}
