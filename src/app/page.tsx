@@ -7,7 +7,12 @@ export default function Home() {
         <h1 className="text-4xl font-bold">Welcome to Contact Manager</h1>
         <p className="mt-2 text-lg text-gray-600">Manage your contacts with ease</p>
 
-<Image src="/contact-manager.png" alt="Contact Manager" width={300} height={300}  className="rounded-lg"/>
+<Image src="/contact.png" alt="Contact Manager" width={300} height={300}  className="rounded-lg shadow-lg mx-auto"/>
+      </div>
+
+      <div className="text-center">
+        
+        <p className="mt-2 text-lg text-gray-600">Start managing your contacts today!</p>
       </div>
 
     </div>

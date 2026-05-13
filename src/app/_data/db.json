@@ -1,22 +1,25 @@
 {
-    "contacts": [
-        {
-            "id": "1",
-            "name": "John Doe",
-            "email": "kXH6d@example.com",
-            "userId": "1"
+  "contacts": [
+    {
+      "id": "2",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "userId": "2"
+    },
+    {
+      "id": "3",
+      "name": "John Doe 2",
+      "email": "john2@example.com",
+      "userId": "2"
+    }
+  ],
 
-        }
-    ],
-
-    "users": [
-        {
-            "id": "1",
-            "name": "John Doe",
-            "email": "a@a.com",
-            "password": "a@a.com"
-        }
-    ]
-
-
+  "users": [
+    {
+      "id": "2",
+      "name": "John Doe",
+      "email": "a@a.com",
+      "password": "a@a.com"
+    }
+  ]
 }
